@@ -1,0 +1,11 @@
+/*
+!assets
+assets/*
+!assets/itsa
+!assets/itsa/**
+!lib
+lib/*
+!lib/bundle.js
+!index.html
+!igloo.css
+!favicon.svg

@@ -1,104 +1,142 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title>Igloo Garage Sale</title>
-    <link rel="stylesheet" type="text/css" href="igloo.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#071d49">
+    <title>鬼冥追光</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="igloo.css?v=cover-brush-type-5">
   </head>
   <body>
-    <audio id="audioImagePlay" style="display:none">
-      <source src="assets/click.mp3" />
-    </audio>
-
-    <div id="splash-container">
-    <div id="Splash">
-      <img src="assets/thegame.png"/>
-      <input id="Start" type="button" value="Start"/>
-      <input id="InstructionsButton" type="button" value="Instructions"/>
-    </div>
-    </div>
-    <div id="instructions-container">
-      <div id="InstructionsPage">
-        <img src="assets/instructions.png"/>
-        <p> Mika and Carassa are in a rush to move out their old stuff.
-          Catch the items as they fall but watch out for pianos!
-          Also be sure not to let the other items crash to the floor.
-          After 3 items have broken during one round, the game is over.
-          Survive each timed round to continue.
-
-          Move Mika by using the left and right arrows.
-        </p>
-          <input id="Back" type="button" value="Back"/>
+    <main id="app" class="app-shell">
+      <button id="language-toggle" class="language-toggle" type="button" aria-label="Switch to English">EN</button>
+      <section id="screen-cover" class="screen screen-cover is-active" aria-label="游戏封面">
+        <div class="cover-actions">
+          <button id="open-instructions" class="image-button" type="button" aria-label="查看游戏说明">
+            <img src="assets/itsa/cover-instructions.png" alt="说明">
+          </button>
+          <button id="open-profile" class="image-button" type="button" aria-label="开始游戏">
+            <img src="assets/itsa/cover-start.png" alt="开始">
+          </button>
+          <button id="cover-ranking" class="image-button" type="button" aria-label="查看实时排名">
+            <img src="assets/itsa/cover-ranking.webp" alt="查看实时排名">
+          </button>
         </div>
-      </div>
+      </section>
 
-      <div id="gameover-container">
-        <div id="GameOverPage">
-          <img src="assets/gameover.png"/>
-          <p> Game Over! </p>
-            <input id="Restart" type="button" value="Play Again?"/>
-            <div id="score">Score</div>
+      <section id="screen-instructions" class="screen screen-instructions" aria-label="游戏说明">
+        <div class="instructions-copy">
+          <h1>游戏说明</h1>
+          <p class="instructions-subtitle">CDU 中国学联 × IT 学生联合会<br>万圣节特别出品</p>
+          <h2>世界观背景</h2>
+          <p>时值万圣节前夕，达尔文的夜色渐浓，CDU 校园里的南瓜灯与万圣装饰次第亮起。一道次元裂隙悄然打开，一群来自东方的可爱小僵僵漂洋过海来到了这片陌生的南半球土地。</p>
+          <p>小僵僵本性温顺，只是初到澳洲水土不服，急需收集鬼火补充魂能。与此同时，随裂隙落下的镇邪符咒会冻结他们；接连中招 3 次就会被彻底封印。</p>
+          <p>请操控小僵僵，在限时内收集鬼火、躲避符咒，帮他们安稳度过特别的万圣夜。</p>
+          <h2>可选角色</h2>
+          <p>开局可自由选择喜爱的僵僵形象，所有角色仅外观不同，没有属性差异。</p>
+          <ul class="character-notes">
+            <li><strong>官帽小僵：</strong>经典圆顶清朝官帽造型，脸蛋圆乎乎，是最具代表性的软萌僵尸。</li>
+            <li><strong>格格小僵：</strong>拉翅旗头配牡丹流苏，眉眼慵懒恬淡，是身份金贵的僵尸格格。</li>
+          </ul>
+          <h2>道具与效果</h2>
+          <ul>
+            <li><img src="assets/itsa/item-a.png" alt="蓝色鬼火"><span><strong>蓝色鬼火（游魂冥火）</strong><br>寻常游魂散逸的基础魂火，接住得 1 分。</span></li>
+            <li><img src="assets/itsa/item-b.png" alt="黄色鬼火"><span><strong>黄色鬼火（百年灵火）</strong><br>稀有且能量精纯，接住得 5 分。</span></li>
+            <li><img src="assets/itsa/item-hazard.png" alt="镇邪符咒"><span><strong>镇邪符咒</strong><br>碰到后定身 3 秒；累计 3 张则游戏失败。</span></li>
+          </ul>
+          <h2>关卡与操作</h2>
+          <p class="instructions-controls">电脑使用 ← → 方向键或 A/D 键移动；手机点击屏幕下方按钮控制移动。每关限时 30 秒，时间结束进入下一关；分数和符咒碰撞次数会持续累计。每通过一关，道具掉落速度和符咒出现概率都会小幅提升。</p>
+          <p>符咒冻结期间，计时器和场上物体继续运行，角色无法移动，碰撞不会产生额外效果。</p>
+          <h2>重玩与排行榜</h2>
+          <p>重新开始会重置关卡、时间、分数、符咒次数和角色状态，但会保留已填写的玩家资料与选择的角色。排行榜记录每位玩家的历史最高分，邮箱仅用于获奖联系，不会公开显示。</p>
+          <p class="instructions-credit">本游戏由 CDU 中国学联联合 IT 学生联合会制作，祝大家在异国他乡也能感受中式趣味与节日氛围！</p>
+        </div>
+        <button id="instructions-start" class="image-button instructions-start" type="button" aria-label="填写资料并开始">
+          <img src="assets/itsa/instructions-start.png" alt="开始">
+        </button>
+        <button class="text-back" type="button" data-go="screen-cover">返回封面</button>
+      </section>
+
+      <section id="screen-profile" class="screen screen-profile" aria-label="填写玩家信息">
+        <button class="text-back" type="button" data-go="screen-instructions">返回说明</button>
+        <form id="player-form" novalidate>
+          <label class="form-field name-field">
+            <span class="sr-only">姓名</span>
+            <input id="player-name" name="name" type="text" maxlength="30" autocomplete="name" placeholder="姓名" required>
+          </label>
+          <label class="form-field email-field">
+            <span class="sr-only">电邮</span>
+            <input id="player-email" name="email" type="email" maxlength="100" autocomplete="email" placeholder="邮箱" required>
+          </label>
+          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+          <button class="image-button profile-submit" type="submit" aria-label="确认提交">
+            <img src="assets/itsa/profile-submit.png" alt="确认提交">
+          </button>
+        </form>
+      </section>
+
+      <section id="screen-character" class="screen screen-character" aria-label="选择角色">
+        <div class="character-options">
+          <button class="character-button" type="button" data-character="a" aria-label="选择角色甲">
+            <img src="assets/itsa/character-a-select.png" alt="角色甲">
+          </button>
+          <button class="character-button" type="button" data-character="b" aria-label="选择角色乙">
+            <img src="assets/itsa/character-b-select.png" alt="角色乙">
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-game" class="screen screen-game" aria-label="游戏画面">
+        <canvas id="game-canvas" width="700" height="990" aria-label="鬼冥追光游戏画布"></canvas>
+        <div class="game-controls" aria-label="移动控制">
+          <button id="move-left" class="image-button move-button" type="button" aria-label="向左移动">
+            <img src="assets/itsa/move-left.png" alt="向左">
+          </button>
+          <button id="move-right" class="image-button move-button" type="button" aria-label="向右移动">
+            <img src="assets/itsa/move-right.png" alt="向右">
+          </button>
+        </div>
+        <button id="sound-toggle" class="sound-toggle" type="button" aria-label="切换音效">♪</button>
+        <button id="pause-toggle" class="pause-toggle" type="button" aria-label="暂停游戏">P</button>
+        <div id="pause-overlay" class="pause-overlay" hidden>
+          <div class="pause-panel" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+            <strong id="pause-title">游戏暂停</strong>
+            <button id="resume-game" type="button">继续游戏</button>
           </div>
         </div>
-        <input id="gameover" type="button" value="Game Over"/>
+      </section>
 
+      <section id="screen-gameover" class="screen screen-gameover" aria-label="游戏结束">
+        <div class="final-score"><span id="final-score">0</span> 分</div>
+        <p id="score-sync-status" class="score-sync-status" role="status" aria-live="polite"></p>
+        <div class="gameover-actions">
+            <button id="view-ranking" class="image-button" type="button" aria-label="查看实时排名">
+              <img src="assets/itsa/view-ranking.png" alt="查看实时排名">
+            </button>
+            <button class="image-button play-again" type="button" aria-label="再玩一次">
+              <img src="assets/itsa/play-again.png" alt="再玩一次">
+            </button>
+        </div>
+      </section>
 
-    <div id="canvas-container">
-      <canvas id="myCanvas" width="700" height="750">
-      </canvas>
-      <input id="Stop" type="button" value="End Game"/>
-      <input id="Pause" type="button" value="Pause Game"/>
-      <input id="PauseMusic" type="button" value="Pause Music"/>
-    </div>
-    <div id="levelup-container">
-      <div id="LevelUpPage">
-        You leveled up!
-        <input id="levelup" type="button" value="Level Up"/>
-      </div>
-    </div>
-    <script>
-    $("#Start").click(function () {
-      $("#Splash").hide();
-      $("#InstructionsPage").hide();
-      $("#myCanvas").show();
-      $("#Stop").show();
-      $("#PauseMusic").show();
+      <section id="screen-ranking" class="screen screen-ranking" aria-label="实时排名">
+        <h1 class="ranking-title">实时排名</h1>
+        <ol id="ranking-list" class="ranking-list" aria-label="玩家排行榜"></ol>
+        <p id="ranking-note" class="ranking-note">正在同步所有玩家的成绩…</p>
+        <div class="ranking-actions">
+            <button id="ranking-back" class="image-button" type="button" aria-label="返回游戏结束页面">
+              <img src="assets/itsa/ranking-back.png" alt="返回">
+            </button>
+            <button class="image-button play-again" type="button" aria-label="再玩一次">
+              <img src="assets/itsa/ranking-play-again.png" alt="再玩一次">
+            </button>
+        </div>
+      </section>
+    </main>
 
-    });
-
-    $("#Restart").click(function () {
-      $("#myCanvas").hide();
-      $("#Stop").hide();
-      $("#PauseMusic").hide();
-    });
-
-    $("#InstructionsButton").click(function() {
-      $("#InstructionsPage").show();
-      $("#Splash").hide();
-    })
-
-    $("#Back").click(function() {
-      $("#InstructionsPage").hide();
-      $("#Splash").show();
-    })
-
-
-    $("#levelup").click(function() {
-        $("#LevelUpPage").show()
-        $("#Pause").click();
-        setTimeout(function() {
-          $("#LevelUpPage").hide();
-          $("#Pause").click();
-        }, 1000);
-
-    });
-
-
-
-    </script>
-
-    <script type="application/javascript" src="lib/bundle.js"></script>
+    <audio id="cover-bgm" src="assets/itsa/bgm/cover-bgm.wav" preload="auto" loop></audio>
+    <audio id="game-bgm" src="assets/itsa/bgm/game-bgm.mp3" preload="auto" loop></audio>
+    <script src="lib/bundle.js?v=cover-brush-type-5"></script>
   </body>
 </html>
