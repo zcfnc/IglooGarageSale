@@ -76,7 +76,6 @@ button {
 .screen-character { background-image: url("assets/itsa/character-select.webp"); }
 .screen-gameover { background-image: url("assets/itsa/game-over.webp"); }
 .screen-ranking { background-image: url("assets/itsa/leaderboard.webp"); }
-html[lang="en"] .screen-cover { background-image: url("assets/itsa/cover-en-brush.png"); }
 html[lang="en"] .screen-profile { background-image: url("assets/itsa/profile-en.webp"); }
 html[lang="en"] .screen-character { background-image: url("assets/itsa/character-select-en.webp"); }
 html[lang="en"] .screen-gameover { background-image: url("assets/itsa/game-over-en.webp"); }
@@ -237,6 +236,30 @@ input:focus-visible {
   text-align: left;
 }
 
+.instructions-copy .instructions-tagline {
+  margin: 0 0 4%;
+  color: #9d1d13;
+  font-weight: 800;
+  text-align: center;
+}
+
+.instructions-copy .instructions-steps {
+  margin: 2% 0 4%;
+  padding-left: 1.5em;
+  font-size: clamp(11px, 2.7vw, 15px);
+  line-height: 1.45;
+}
+
+.instructions-copy .instructions-steps li {
+  display: list-item;
+  min-height: 0;
+  margin: 0 0 .7em;
+  border: 0;
+  font-size: inherit;
+}
+
+.instructions-copy .instructions-steps strong { color: #a0231a; }
+
 html[lang="en"] .instructions-copy {
   font-family: Georgia, "Times New Roman", serif;
 }
@@ -272,6 +295,7 @@ html[lang="en"] .text-back { font-family: Georgia, "Times New Roman", serif; }
 
 .name-field { top: 57.05%; }
 .email-field { top: 71.7%; }
+html[lang="en"] .email-field { top: 73.8%; }
 
 .form-field input {
   width: 100%;
@@ -470,6 +494,9 @@ html[lang="en"] .text-back { font-family: Georgia, "Times New Roman", serif; }
   text-shadow: 0 1px #fff2bf;
 }
 
+/* The replacement leaderboard backgrounds already include their title banner. */
+.screen-ranking .ranking-title { display: none; }
+
 html[lang="en"] .ranking-title {
   left: 12%;
   right: 12%;
@@ -480,8 +507,8 @@ html[lang="en"] .ranking-title {
 
 .ranking-list {
   position: absolute;
-  left: 29%;
-  right: 18%;
+  left: 28%;
+  right: 14%;
   top: 0;
   height: 100%;
   margin: 0;
@@ -490,18 +517,17 @@ html[lang="en"] .ranking-title {
   counter-reset: rank;
 }
 
-/* Row centers measured from the 1100 x 1556 leaderboard artwork.
-   The first three rows are taller; equal grid tracks drift above later rows. */
-.ranking-list li:nth-child(1) { --row-center: 29.306%; }
-.ranking-list li:nth-child(2) { --row-center: 35.990%; }
-.ranking-list li:nth-child(3) { --row-center: 42.738%; }
-.ranking-list li:nth-child(4) { --row-center: 49.293%; }
-.ranking-list li:nth-child(5) { --row-center: 55.270%; }
-.ranking-list li:nth-child(6) { --row-center: 61.247%; }
-.ranking-list li:nth-child(7) { --row-center: 67.159%; }
-.ranking-list li:nth-child(8) { --row-center: 73.072%; }
-.ranking-list li:nth-child(9) { --row-center: 78.985%; }
-.ranking-list li:nth-child(10) { --row-center: 84.961%; }
+/* Centers calibrated to the ten blank rows in the replacement artwork. */
+.ranking-list li:nth-child(1) { --row-center: 29.5%; }
+.ranking-list li:nth-child(2) { --row-center: 36.0%; }
+.ranking-list li:nth-child(3) { --row-center: 42.6%; }
+.ranking-list li:nth-child(4) { --row-center: 49.1%; }
+.ranking-list li:nth-child(5) { --row-center: 55.3%; }
+.ranking-list li:nth-child(6) { --row-center: 61.3%; }
+.ranking-list li:nth-child(7) { --row-center: 67.2%; }
+.ranking-list li:nth-child(8) { --row-center: 73.1%; }
+.ranking-list li:nth-child(9) { --row-center: 79.0%; }
+.ranking-list li:nth-child(10) { --row-center: 85.0%; }
 
 .ranking-list li {
   counter-increment: rank;
