@@ -563,7 +563,7 @@ html[lang="en"] .ranking-title {
 
 .ranking-list .rank-score {
   position: absolute;
-  right: 4%;
+  right: 7%;
   top: 50%;
   transform: translateY(-50%);
   color: #9d1d13;
