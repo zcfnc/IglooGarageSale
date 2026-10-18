@@ -75,8 +75,8 @@ button {
 .screen-profile { background-image: url("assets/itsa/profile.webp"); }
 .screen-character { background-image: url("assets/itsa/character-select.webp"); }
 .screen-gameover { background-image: url("assets/itsa/game-over.webp"); }
-.screen-ranking { background-image: url("assets/itsa/leaderboard.webp"); }
-html[lang="en"] .screen-profile { background-image: url("assets/itsa/profile-en.webp"); }
+.screen-ranking { background-image: url("assets/itsa/leaderboard-en.webp"); }
+html[lang="en"] .screen-profile { background-image: url("assets/itsa/profile-en-edited.png"); }
 html[lang="en"] .screen-character { background-image: url("assets/itsa/character-select-en.webp"); }
 html[lang="en"] .screen-gameover { background-image: url("assets/itsa/game-over-en.webp"); }
 
@@ -100,6 +100,8 @@ html[lang="en"] .screen-gameover { background-image: url("assets/itsa/game-over-
 
 .image-button:focus-visible,
 .character-button:focus-visible,
+.language-toggle:focus-visible,
+.cover-help:focus-visible,
 .text-back:focus-visible,
 .sound-toggle:focus-visible,
 input:focus-visible {
@@ -125,16 +127,82 @@ input:focus-visible {
   gap: 4%;
 }
 
-.cover-actions #open-instructions,
+.cover-actions #open-ranking,
 .cover-actions #open-profile { width: 48%; }
 
-
-.instructions-start {
+.cover-help {
   position: absolute;
-  width: 46%;
-  left: 27%;
-  bottom: 5.5%;
+  z-index: 3;
+  top: .6%;
+  left: 1.8%;
+  display: grid;
+  place-items: center;
+  width: 9.5%;
+  aspect-ratio: 1;
+  border: 2px solid #f5ca76;
+  border-radius: 50%;
+  background: rgba(6, 25, 60, .8);
+  color: #fff3ca;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+  font-size: clamp(22px, 5vw, 32px);
+  font-weight: 900;
+  line-height: 1;
 }
+
+/* The English cover already contains its button artwork. Keep real buttons over it. */
+html[lang="en"] .screen-cover .cover-help {
+  top: .3%;
+  left: 1.7%;
+  height: 5.7%;
+  aspect-ratio: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+html[lang="en"] .screen-cover .cover-help span { visibility: hidden; }
+
+html[lang="en"] .screen-cover .cover-actions {
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+html[lang="en"] .screen-cover .cover-actions button {
+  position: absolute;
+  display: block;
+  height: 12.5%;
+  pointer-events: auto;
+}
+
+html[lang="en"] .screen-cover .cover-actions img { visibility: hidden; }
+
+html[lang="en"] .screen-cover #open-ranking {
+  top: 80.4%;
+  left: 1.8%;
+  width: 45%;
+}
+
+html[lang="en"] .screen-cover #open-profile {
+  top: 80.4%;
+  left: 50%;
+  width: 46%;
+}
+
+html[lang="en"] .app-shell.is-cover .language-toggle {
+  top: .5%;
+  right: 1.7%;
+  width: 11%;
+  height: 5%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: transparent;
+  font-size: 0;
+}
+
 
 .instructions-copy {
   position: absolute;
@@ -143,7 +211,7 @@ input:focus-visible {
   width: 66%;
   height: 67%;
   overflow-y: auto;
-  padding: 0 3% 18%;
+  padding: 0 3% 8%;
   scrollbar-width: thin;
   color: #402416;
   text-align: left;
@@ -276,14 +344,21 @@ html[lang="en"] .instructions-copy .instructions-controls { font-size: clamp(9px
   top: 2%;
   left: 3%;
   z-index: 2;
-  padding: .48em .8em;
-  border-radius: 999px;
-  color: #fff4d2;
-  background: rgba(3, 20, 52, .74);
-  border: 1px solid rgba(255, 212, 112, .55);
-  font-size: clamp(11px, 2.4vw, 14px);
+  width: 10%;
+  min-width: 44px;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
-html[lang="en"] .text-back { font-family: Georgia, "Times New Roman", serif; }
+
+.text-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
 
 #player-form { position: absolute; inset: 0; }
 
@@ -312,17 +387,44 @@ html[lang="en"] .email-field { top: 73.8%; }
 
 .form-field input::placeholder { color: rgba(48, 48, 48, .48); }
 
+.email-field input[aria-invalid="true"] {
+  border: 2px solid #dd241e;
+  box-shadow: none;
+}
+
 .form-error {
   position: absolute;
-  left: 17%;
-  right: 17%;
-  bottom: 13.8%;
-  min-height: 1.4em;
+  z-index: 2;
+  top: 80.75%;
+  left: 25%;
+  width: 50%;
   margin: 0;
-  color: #7c110c;
+  min-height: 2.8%;
+  padding: 3px 6px;
+  border: 1px solid rgba(104, 139, 212, .68);
+  border-radius: 999px;
+  background: rgba(4, 22, 62, .83);
+  color: #ffe09a;
   text-align: center;
   font-weight: 700;
-  font-size: clamp(11px, 2.6vw, 15px);
+  font-size: clamp(9px, 2.1vw, 13px);
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.form-error:empty { display: none; }
+
+.form-error:not(:empty)::before {
+  content: "!";
+  display: inline-grid;
+  place-items: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: .55em;
+  border-radius: 50%;
+  color: #102449;
+  background: #ffd16b;
+  font-weight: 900;
 }
 
 .profile-submit {
@@ -518,17 +620,17 @@ html[lang="en"] .ranking-title {
   counter-reset: rank;
 }
 
-/* Centers calibrated to the ten blank rows in the replacement artwork. */
-.ranking-list li:nth-child(1) { --row-center: 29.5%; }
-.ranking-list li:nth-child(2) { --row-center: 36.0%; }
-.ranking-list li:nth-child(3) { --row-center: 42.6%; }
-.ranking-list li:nth-child(4) { --row-center: 49.1%; }
-.ranking-list li:nth-child(5) { --row-center: 55.3%; }
-.ranking-list li:nth-child(6) { --row-center: 61.3%; }
+/* Both languages use the same Rank artwork and row positions. */
+.ranking-list li:nth-child(1) { --row-center: 29.0%; }
+.ranking-list li:nth-child(2) { --row-center: 35.7%; }
+.ranking-list li:nth-child(3) { --row-center: 42.4%; }
+.ranking-list li:nth-child(4) { --row-center: 49.4%; }
+.ranking-list li:nth-child(5) { --row-center: 55.2%; }
+.ranking-list li:nth-child(6) { --row-center: 61.2%; }
 .ranking-list li:nth-child(7) { --row-center: 67.2%; }
-.ranking-list li:nth-child(8) { --row-center: 73.1%; }
-.ranking-list li:nth-child(9) { --row-center: 79.0%; }
-.ranking-list li:nth-child(10) { --row-center: 85.0%; }
+.ranking-list li:nth-child(8) { --row-center: 73.2%; }
+.ranking-list li:nth-child(9) { --row-center: 79.2%; }
+.ranking-list li:nth-child(10) { --row-center: 85.1%; }
 
 .ranking-list li {
   counter-increment: rank;
@@ -578,11 +680,11 @@ html[lang="en"] .ranking-title {
 
 .ranking-note {
   position: absolute;
-  left: 18%;
-  right: 18%;
-  top: 24.5%;
+  left: 20%;
+  right: 20%;
+  top: 89%;
   margin: 0;
-  padding: .14em .4em;
+  padding: .08em .25em;
   border-radius: 999px;
   color: rgba(84, 39, 25, .7);
   background: rgba(249, 222, 163, .9);
@@ -590,12 +692,8 @@ html[lang="en"] .ranking-title {
   font-size: clamp(9px, 2.2vw, 12px);
 }
 html[lang="en"] .ranking-note {
-  left: 18%;
-  right: 18%;
-  top: 24.5%;
   font-size: clamp(8px, 1.75vw, 10px);
   line-height: 1.2;
-  text-align: center;
 }
 html[lang="en"] .ranking-list .rank-name,
 html[lang="en"] .ranking-list .rank-score,
