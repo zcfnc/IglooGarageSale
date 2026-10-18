@@ -58,6 +58,20 @@ button {
   font-weight: 800;
 }
 
+/* The help page uses matching, square top controls in both languages. */
+.app-shell.is-instructions .language-toggle {
+  top: 2%;
+  right: 3%;
+  width: 10%;
+  height: auto;
+  min-width: 44px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+}
+
 .screen {
   position: absolute;
   inset: 0;
@@ -130,6 +144,32 @@ input:focus-visible {
 .cover-actions #open-ranking,
 .cover-actions #open-profile { width: 48%; }
 
+/* Match the Chinese Rank artwork to the English cover's painted button bounds. */
+html[lang="zh-CN"] .screen-cover .cover-actions { height: 15%; }
+
+html[lang="zh-CN"] .screen-cover .cover-actions #open-ranking {
+  position: absolute;
+  top: 5.3%;
+  left: -4.77%;
+  width: 51.14%;
+  height: 83.3%;
+}
+
+html[lang="zh-CN"] .screen-cover .cover-actions #open-ranking img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/* Keep the Chinese Start button at its existing flex-layout coordinates. */
+html[lang="zh-CN"] .screen-cover .cover-actions #open-profile {
+  position: absolute;
+  top: 0;
+  left: 52%;
+  width: 48%;
+  height: 100%;
+}
+
 .cover-help {
   position: absolute;
   z-index: 3;
@@ -149,8 +189,7 @@ input:focus-visible {
   line-height: 1;
 }
 
-/* The English cover already contains its button artwork. Keep real buttons over it. */
-html[lang="en"] .screen-cover .cover-help {
+.screen-cover .cover-help {
   top: .3%;
   left: 1.7%;
   height: 5.7%;
@@ -160,7 +199,20 @@ html[lang="en"] .screen-cover .cover-help {
   box-shadow: none;
 }
 
-html[lang="en"] .screen-cover .cover-help span { visibility: hidden; }
+.screen-cover .cover-help img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+/* The English cover already contains its button artwork. Keep real buttons over it. */
+html[lang="en"] .screen-cover .cover-help {
+  color: transparent;
+}
+
+html[lang="en"] .screen-cover .cover-help img { visibility: hidden; }
 
 html[lang="en"] .screen-cover .cover-actions {
   inset: 0;
@@ -189,13 +241,18 @@ html[lang="en"] .screen-cover #open-profile {
   width: 46%;
 }
 
-html[lang="en"] .app-shell.is-cover .language-toggle {
+.app-shell.is-cover .language-toggle {
   top: .5%;
   right: 1.7%;
   width: 11%;
   height: 5%;
   min-width: 0;
   padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+html[lang="en"] .app-shell.is-cover .language-toggle {
   border: 0;
   background: transparent;
   box-shadow: none;
