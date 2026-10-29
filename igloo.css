@@ -387,7 +387,7 @@ html[lang="en"] .app-shell.is-cover .language-toggle {
 
 html[lang="en"] .instructions-copy {
   font-family: Georgia, "Times New Roman", serif;
-  height: 56%;
+  height: 67%;
 }
 html[lang="en"] .instructions-copy h1 { letter-spacing: .03em; }
 html[lang="en"] .instructions-copy h2 { font-size: clamp(13px, 3.1vw, 18px); }
