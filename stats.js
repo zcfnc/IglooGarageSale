@@ -7,8 +7,8 @@ const copy = {
   zh: {
     back: "返回游戏", backAria: "返回游戏首页", gameTitle: "鬼冥追光", pageTitle: "活动数据",
     subtitle: "公开展示活动参与情况，玩家邮箱及个人联系方式不会出现在本页面。",
-    live: "实时数据 · 每 30 秒更新", players: "参与玩家", peopleUnit: " 人", playersNote: "提交过成绩的独立玩家",
-    plays: "总游玩次数", playsUnit: " 局", trackedNote: "统计功能上线后记录", totalTime: "累计游玩时长",
+    live: "实时数据 · 每 30 秒更新", players: "参与玩家", playersIcon: "人", peopleUnit: " 人", playersNote: "提交过成绩的独立玩家",
+    plays: "总游玩次数", playsIcon: "局", playsUnit: " 局", trackedNote: "统计功能上线后记录", totalTime: "累计游玩时长", timeIcon: "时", averageIcon: "均",
     timeNote: "已排除暂停时间", averageTime: "平均每局时长", averageNote: "只计算正常完成场次",
     trend: "最近游玩趋势", sevenDays: "7 天", completion: "游戏完成情况", completionRate: "完成率",
     completed: "正常完成", unfinished: "未完成", audience: "玩家使用情况", device: "设备", language: "语言",
@@ -19,8 +19,8 @@ const copy = {
   en: {
     back: "Back to game", backAria: "Back to game home", gameTitle: "Ghost Chase", pageTitle: "Event Statistics",
     subtitle: "Public event participation data. Player emails and contact details are never displayed on this page.",
-    live: "Live data · refreshes every 30 seconds", players: "Players", peopleUnit: "", playersNote: "Unique players who submitted a score",
-    plays: "Total plays", playsUnit: "", trackedNote: "Recorded since analytics launched", totalTime: "Total play time",
+    live: "Live data · refreshes every 30 seconds", players: "Players", playersIcon: "P", peopleUnit: "", playersNote: "Unique players who submitted a score",
+    plays: "Total plays", playsIcon: "#", playsUnit: "", trackedNote: "Recorded since analytics launched", totalTime: "Total play time", timeIcon: "T", averageIcon: "AVG",
     timeNote: "Paused time is excluded", averageTime: "Average play time", averageNote: "Completed games only",
     trend: "Recent activity", sevenDays: "7 days", completion: "Game completion", completionRate: "completion",
     completed: "Completed", unfinished: "Unfinished", audience: "Player usage", device: "Device", language: "Language",

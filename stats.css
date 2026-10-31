@@ -108,6 +108,7 @@ button, a { font: inherit; }
   font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
+  min-width: max-content;
 }
 
 .back-link > span:first-child {
@@ -185,6 +186,10 @@ button, a { font: inherit; }
 
 .metric-card.featured { border-color: rgba(234, 181, 69, .78); }
 .metric-icon { display: grid; flex: 0 0 48px; height: 48px; place-items: center; border-radius: 14px; color: var(--gold-light); background: linear-gradient(145deg, var(--red), var(--red-dark)); box-shadow: inset 0 0 0 2px rgba(255, 215, 108, .34); font-family: "STKaiti", "KaiTi", serif; font-size: 23px; font-weight: 900; }
+html[lang="en"] .hero { grid-template-columns: 190px minmax(0, 1fr) auto; }
+html[lang="en"] .back-link > span:last-child { white-space: nowrap; }
+html[lang="en"] .metric-icon { font-family: Georgia, serif; font-size: 20px; letter-spacing: 0; }
+html[lang="en"] .metric-icon[data-i18n="averageIcon"] { font-size: 12px; }
 .metric-card p { margin: 0 0 3px; color: #7b4930; font-size: 12px; font-weight: 800; }
 .metric-card strong { color: var(--red); font-family: Georgia, serif; font-size: 34px; line-height: 1; }
 .metric-card span { color: #6f3926; font-size: 13px; font-weight: 800; }
@@ -250,6 +255,7 @@ footer { display: flex; justify-content: space-between; gap: 18px; padding: 20px
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr auto; }
+  html[lang="en"] .hero { grid-template-columns: 1fr auto; }
   .back-link { grid-column: 1 / -1; }
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
   .dashboard-grid { grid-template-columns: 1fr; }
