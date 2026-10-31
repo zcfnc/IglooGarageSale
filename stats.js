@@ -20,7 +20,7 @@ const copy = {
     back: "Back to game", backAria: "Back to game home", gameTitle: "Ghost Chase", pageTitle: "Event Statistics",
     subtitle: "Public event participation data. Player emails and contact details are never displayed on this page.",
     live: "Live data · refreshes every 30 seconds", players: "Players", playersIcon: "P", peopleUnit: "", playersNote: "Unique players who submitted a score",
-    plays: "Total plays", playsIcon: "#", playsUnit: "", trackedNote: "Recorded since analytics launched", totalTime: "Total play time", timeIcon: "T", averageIcon: "AVG",
+    plays: "Total plays", playsIcon: "×", playsUnit: "", trackedNote: "Recorded since analytics launched", totalTime: "Total play time", timeIcon: "T", averageIcon: "AVG",
     timeNote: "Paused time is excluded", averageTime: "Average play time", averageNote: "Completed games only",
     trend: "Recent activity", sevenDays: "7 days", completion: "Game completion", completionRate: "completion",
     completed: "Completed", unfinished: "Unfinished", audience: "Player usage", device: "Device", language: "Language",
