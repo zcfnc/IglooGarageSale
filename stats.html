@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鬼冥追光 · 活动数据</title>
+  <meta name="description" content="鬼冥追光万圣节小游戏公开活动数据">
+  <link rel="stylesheet" href="stats.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <a class="back-link" href="./index.html" aria-label="返回游戏首页" data-i18n-aria="backAria">
+        <span aria-hidden="true">‹</span> <span data-i18n="back">返回游戏</span>
+      </a>
+      <div class="hero-copy">
+        <p class="eyebrow">CSSA × ITSA · HALLOWEEN EVENT</p>
+        <h1><span data-i18n="gameTitle">鬼冥追光</span> <span data-i18n="pageTitle">活动数据</span></h1>
+        <p class="hero-subtitle" data-i18n="subtitle">公开展示活动参与情况，玩家邮箱及个人联系方式不会出现在本页面。</p>
+      </div>
+      <div class="hero-actions">
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">EN</button>
+        <div class="live-pill"><i aria-hidden="true"></i> <span data-i18n="live">实时数据 · 每 30 秒更新</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="metric-grid" aria-label="主要数据">
+        <article class="metric-card featured">
+          <div class="metric-icon" aria-hidden="true">人</div>
+          <div>
+            <p data-i18n="players">参与玩家</p>
+            <strong id="player-count">—</strong><span data-i18n="peopleUnit"> 人</span>
+            <small data-i18n="playersNote">提交过成绩的独立玩家</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon" aria-hidden="true">局</div>
+          <div>
+            <p data-i18n="plays">总游玩次数</p>
+            <strong id="total-plays">—</strong><span data-i18n="playsUnit"> 局</span>
+            <small data-i18n="trackedNote">统计功能上线后记录</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon" aria-hidden="true">时</div>
+          <div>
+            <p data-i18n="totalTime">累计游玩时长</p>
+            <strong id="total-time">—</strong>
+            <small data-i18n="timeNote">已排除暂停时间</small>
+          </div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-icon" aria-hidden="true">均</div>
+          <div>
+            <p data-i18n="averageTime">平均每局时长</p>
+            <strong id="average-time">—</strong>
+            <small data-i18n="averageNote">只计算正常完成场次</small>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel trend-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">ACTIVITY</p>
+              <h2 data-i18n="trend">最近游玩趋势</h2>
+            </div>
+            <div class="range-tabs" aria-label="统计范围">
+              <span class="active" data-i18n="sevenDays">7 天</span>
+            </div>
+          </div>
+          <div class="chart" id="trend-chart" role="img" aria-label="最近七天游玩次数柱状图">
+            <div class="chart-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </article>
+
+        <article class="panel completion-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">COMPLETION</p>
+              <h2 data-i18n="completion">游戏完成情况</h2>
+            </div>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" id="completion-donut" role="img"><span><strong id="completion-rate">—</strong><span data-i18n="completionRate">完成率</span></span></div>
+            <dl class="legend">
+              <div><dt><i class="complete"></i><span data-i18n="completed">正常完成</span></dt><dd id="completed-plays">—</dd></div>
+              <div><dt><i class="unfinished"></i><span data-i18n="unfinished">未完成</span></dt><dd id="unfinished-plays">—</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="panel split-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">AUDIENCE</p>
+              <h2 data-i18n="audience">玩家使用情况</h2>
+            </div>
+          </div>
+          <div class="split-block">
+            <div class="split-title"><span data-i18n="device">设备</span><b id="device-main">—</b></div>
+            <div class="progress"><i id="device-progress" style="width:0%"></i></div>
+            <div class="split-labels"><span id="desktop-label">—</span><span id="mobile-label">—</span></div>
+          </div>
+          <div class="split-block">
+            <div class="split-title"><span data-i18n="language">语言</span><b id="language-main">—</b></div>
+            <div class="progress amber"><i id="language-progress" style="width:0%"></i></div>
+            <div class="split-labels"><span id="english-label">—</span><span id="chinese-label">—</span></div>
+          </div>
+        </article>
+
+        <article class="panel leaderboard-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">PLAYERS</p>
+              <h2 data-i18n="playerData">玩家参与数据</h2>
+            </div>
+            <p class="privacy-note"><span aria-hidden="true">●</span> <span data-i18n="emailHidden">邮箱已隐藏</span></p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th data-i18n="player">玩家</th><th data-i18n="playCount">游玩次数</th><th data-i18n="cumulativeTime">累计时长</th><th data-i18n="highestScore">最高分</th></tr>
+              </thead>
+              <tbody id="player-rows"><tr><td colspan="4" class="loading" data-i18n="loading">正在读取统计数据…</td></tr></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span><span data-i18n="updated">数据更新时间：</span><time id="updated-at">—</time></span>
+      <span>CDU Chinese Students &amp; Scholars Association × IT Students Association</span>
+    </footer>
+  </div>
+  <script src="stats.js" defer></script>
+</body>
+</html>
