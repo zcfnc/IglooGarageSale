@@ -9,3 +9,6 @@ lib/*
 !index.html
 !igloo.css
 !favicon.svg
+!stats.html
+!stats.css
+!stats.js
